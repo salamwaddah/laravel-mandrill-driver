@@ -30,6 +30,10 @@ class MandrillChannel
 
     public function toArray(MandrillMessage $message)
     {
+        $data = array_map(function ($value, $key) {
+            return ['name' => $key, 'content' => $value];
+        }, $message->viewData, array_keys($message->viewData));
+
         return [
             'key' => Config::get('mail.mandrill.key'),
             'template_name' => $message->view,
@@ -42,7 +46,7 @@ class MandrillChannel
                 'subject' => $message->subject,
                 'from_email' => $message->from[0] ?? Config::get('mail.from.address'),
                 'from_name' => $message->from[1] ?? Config::get('mail.from.name'),
-                "global_merge_vars" => $message->viewData
+                "global_merge_vars" => $data
             ]
         ];
     }
