@@ -1,0 +1,20 @@
+{
+    "name": "salamwaddah/laravel-mandrill-driver",
+    "type": "composer-plugin",
+    "authors": [
+        {
+            "name": "Salam Waddah",
+            "email": "salamwaddah@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SalamWaddah\\": "src/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "illuminate/notifications": "^5.8",
+        "illuminate/support": "^5.8"
+    }
+}
