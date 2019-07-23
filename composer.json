@@ -1,6 +1,5 @@
 {
     "name": "salamwaddah/laravel-mandrill-driver",
-    "type": "composer-plugin",
     "authors": [
         {
             "name": "Salam Waddah",
