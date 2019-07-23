@@ -2,12 +2,11 @@
 
 namespace SalamWaddah\Mandrill;
 
-
 use GuzzleHttp\Client;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Config;
 
-class Channel
+class MandrillChannel
 {
     private $client;
     private $url = 'https://mandrillapp.com/api/1.0/messages/send-template.json';
@@ -17,11 +16,10 @@ class Channel
         $this->client = $client;
     }
 
-
     public function send($notifiable, Notification $notification)
     {
         /**
-         * @var $message Message
+         * @var $message MandrillMessage
          */
         $message = $notification->toMandrill($notifiable);
 
@@ -30,7 +28,7 @@ class Channel
         ]);
     }
 
-    public function toArray(Message $message)
+    public function toArray(MandrillMessage $message)
     {
         return [
             'key' => Config::get('mail.mandrill.key'),
@@ -42,8 +40,8 @@ class Channel
                     return ['email' => $to];
                 }, $message->getTo()),
                 'subject' => $message->subject,
-                'from_email' => $message->from[0],
-                'from_name' => $message->from[1],
+                'from_email' => $message->from[0] ?? Config::get('mail.from.address'),
+                'from_name' => $message->from[1] ?? Config::get('mail.from.name'),
                 "global_merge_vars" => $message->viewData
             ]
         ];

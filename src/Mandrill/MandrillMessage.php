@@ -4,7 +4,7 @@ namespace SalamWaddah\Mandrill;
 
 use Illuminate\Notifications\Messages\MailMessage;
 
-class Message extends MailMessage
+class MandrillMessage extends MailMessage
 {
     private $tos = [];
 
