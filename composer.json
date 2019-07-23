@@ -16,5 +16,6 @@
         "guzzlehttp/guzzle": "^6.3",
         "illuminate/notifications": "^5.8",
         "illuminate/support": "^5.8"
-    }
+    },
+    "minimum-stability": "stable"
 }
