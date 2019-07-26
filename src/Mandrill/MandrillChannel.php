@@ -23,31 +23,18 @@ class MandrillChannel
          */
         $message = $notification->toMandrill($notifiable);
 
-        $this->client->request('POST', $this->url, [
+        $this->client->post($this->url, [
             'json' => $this->toArray($message)
         ]);
     }
 
     public function toArray(MandrillMessage $message)
     {
-        $data = array_map(function ($value, $key) {
-            return ['name' => $key, 'content' => $value];
-        }, $message->viewData, array_keys($message->viewData));
-
         return [
-            'key' => Config::get('mail.mandrill.key'),
+            'key' => env('MANDRILL_SECRET', Config::get('mail.mandrill.key')),
             'template_name' => $message->view,
             'template_content' => [],
-            'message' => [
-                'merge_language' => 'handlebars',
-                'to' => array_map(function ($to) {
-                    return ['email' => $to];
-                }, $message->getTo()),
-                'subject' => $message->subject,
-                'from_email' => $message->from[0] ?? Config::get('mail.from.address'),
-                'from_name' => $message->from[1] ?? Config::get('mail.from.name'),
-                "global_merge_vars" => $data
-            ]
+            'message' => $message->structure()
         ];
     }
 }

@@ -3,25 +3,81 @@
 namespace SalamWaddah\Mandrill;
 
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Config;
 
 class MandrillMessage extends MailMessage
 {
+    const MERGE_LANGUAGE = 'handlebars';
+
     private $tos = [];
 
-    public function addTo($to)
+    public function addTo(string $to): self
     {
         array_push($this->tos, $to);
+
         return $this;
     }
 
-    public function addTos(array $tos)
+    public function addTos(array $tos): self
     {
-        array_merge($this->tos, $tos);
+        foreach ($tos as $to) {
+            $this->addTo($to);
+        }
+
         return $this;
     }
 
-    public function getTo()
+    public function fromEmail(string $email): self
     {
-        return $this->tos;
+        $this->from[0] = $email;
+
+        return $this;
+    }
+
+    public function fromName(string $name): self
+    {
+        $this->from[1] = $name;
+
+        return $this;
+    }
+
+    public function templateName(string $template): self
+    {
+        $this->view = $template;
+
+        return $this;
+    }
+
+    public function content(array $data): self
+    {
+        $this->viewData = $data;
+
+        return $this;
+    }
+
+    public function structure(): array
+    {
+        return [
+            'merge_language' => self::MERGE_LANGUAGE,
+            'to' => $this->getTo(),
+            'subject' => $this->subject,
+            'from_email' => $this->from[0] ?? Config::get('mail.from.address'),
+            'from_name' => $this->from[1] ?? Config::get('mail.from.name'),
+            "global_merge_vars" => $this->mapGlobalVars()
+        ];
+    }
+
+    private function getTo(): array
+    {
+        return array_map(function ($to) {
+            return ['email' => $to];
+        }, $this->tos);
+    }
+
+    private function mapGlobalVars(): array
+    {
+        return array_map(function ($value, $key) {
+            return ['name' => $key, 'content' => $value];
+        }, $this->viewData, array_keys($this->viewData));
     }
 }
