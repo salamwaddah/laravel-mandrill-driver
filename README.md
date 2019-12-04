@@ -71,9 +71,31 @@ public function toMandrill($notifiable)
 |`fromName`|`string`|Overrides the default from name|
 |`fromEmail`|`string`|Overrides the default from email|
 |`content`|`array`|Content array| 
-|`view`|`function`|Accepts 2 params (`templateName`, `keyedContentArray`)|
+|`view`|`function`|Accepts 2 params (`$templateName`, `$keyedContentArray`)|
 
-## Usage in Mandrill
+## Usage in Mandrill (Dynamic Handlebars)
 When specifying your content in the methods `content` or `view` you can then write in [handlebars syntax](https://mandrill.zendesk.com/hc/en-us/articles/205582537-Using-Handlebars-for-Dynamic-Content) in your Mandrill templates like this; 
 
 Hey `{{user.name}}`, you have successfully purchased `{{product.name}}`.
+
+## Mailchimp syntax
+If you wish to use [Mailchimp Merge Tags](https://mandrill.zendesk.com/hc/en-us/articles/205582787-Mailchimp-Merge-Tags-Supported-in-Mandrill) instead of the dynamic handlebars then you can set the `$mergeLanguage` optional param in `templateName` method to `mailchimp`.
+
+In mailchimp merge tags, arrays are not supported, so each tag only accepts a string. [Full documentation including booked keywords on mandrill](https://mandrill.zendesk.com/hc/en-us/articles/205582787-Mailchimp-Merge-Tags-Supported-in-Mandrill)
+#### Mailchimp Example
+```php
+public function toMandrill($notifiable)
+{
+    return (new MandrillMessage())
+        ->subject('Purchase successful')
+        ->templateName('mandrill-template-name', 'mailchimp') << HERE
+        ->addTo($notifiable->email)
+        ->content([
+            'customer_name' => $notifiable->name,
+            'invoice_link' => 'http://example.com/download/invoice.pdf',
+        ])
+}
+```
+Then in your mandrill template use as follows;
+
+Hi `*|customer_name|*`, you can download your invoice from here `*|invoice_link|*`, 
