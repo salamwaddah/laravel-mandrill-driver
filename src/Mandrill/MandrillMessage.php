@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Config;
 
 class MandrillMessage extends MailMessage
 {
-    const MERGE_LANGUAGE = 'handlebars';
+    const MERGE_LANGUAGE_HANDLEBARS = 'handlebars';
+    const MERGE_LANGUAGE_MAILCHIMP = 'mailchimp';
 
     private $tos = [];
+    private $mergeLanguage = self::MERGE_LANGUAGE_HANDLEBARS;
 
     public function addTo(string $to): self
     {
@@ -41,9 +43,10 @@ class MandrillMessage extends MailMessage
         return $this;
     }
 
-    public function templateName(string $template): self
+    public function templateName(string $template, $mergeLanguage = self::MERGE_LANGUAGE_HANDLEBARS): self
     {
         $this->view = $template;
+        $this->mergeLanguage = $mergeLanguage;
 
         return $this;
     }
@@ -58,7 +61,7 @@ class MandrillMessage extends MailMessage
     public function structure(): array
     {
         return [
-            'merge_language' => self::MERGE_LANGUAGE,
+            'merge_language' => $this->mergeLanguage,
             'to' => $this->getTo(),
             'subject' => $this->subject,
             'from_email' => $this->from[0] ?? Config::get('mail.from.address'),
