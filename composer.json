@@ -1,5 +1,5 @@
 {
-    "name": "salamwaddah/laravel-mandrill-driver",
+    "name": "salamwaddah/laravel-mandrill-notifications-channel",
     "description": "Mandrill notification channel for Laravel",
     "license": "MIT",
     "authors": [
