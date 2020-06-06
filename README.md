@@ -57,7 +57,7 @@ public function toMandrill($notifiable)
         ->fromEmail('custom_from@example.com')
         ->content([
             'product' => $this->product->toArray(),
-        ])
+        ]);
 }
 ```
 
