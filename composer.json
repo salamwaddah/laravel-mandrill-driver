@@ -31,9 +31,9 @@
         }
     },
     "require": {
-        "guzzlehttp/guzzle": "^6.3",
-        "illuminate/notifications": "5.5.*",
-        "illuminate/support": "5.5.*"
+        "guzzlehttp/guzzle": "^6.5",
+        "illuminate/notifications": "5.5.* || ^6.0 || ^7.0",
+        "illuminate/support": "5.5.* || ^6.0 || ^7.0"
     },
     "minimum-stability": "stable"
 }
