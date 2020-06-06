@@ -1,11 +1,28 @@
 {
     "name": "salamwaddah/laravel-mandrill-notifications-channel",
-    "description": "Mandrill notification channel for Laravel",
+    "description": "Mandrill notification channel for Laravel 5, 6, 7",
+    "type": "library",
     "license": "MIT",
+    "keywords": [
+        "laravel",
+        "laravel 5",
+        "laravel 6",
+        "laravel 7",
+        "mandrill",
+        "notifications",
+        "channel",
+        "driver"
+    ],
+    "support": {
+        "issues": "https://github.com/salamwaddah/laravel-mandrill-driver/issues",
+        "source": "https://github.com/salamwaddah/laravel-mandrill-driver"
+    },
     "authors": [
         {
             "name": "Salam Waddah",
-            "email": "salamwaddah@gmail.com"
+            "email": "salamwaddah@gmail.com",
+            "homepage": "https://salamwaddah.com/",
+            "role": "Developer"
         }
     ],
     "autoload": {
