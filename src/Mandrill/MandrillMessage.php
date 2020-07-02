@@ -60,14 +60,22 @@ class MandrillMessage extends MailMessage
 
     public function structure(): array
     {
-        return [
+        $payload = [
             'merge_language' => $this->mergeLanguage,
             'to' => $this->getTo(),
             'subject' => $this->subject,
             'from_email' => $this->from[0] ?? Config::get('mail.from.address'),
             'from_name' => $this->from[1] ?? Config::get('mail.from.name'),
-            "global_merge_vars" => $this->mapGlobalVars()
+            'global_merge_vars' => $this->mapGlobalVars(),
         ];
+
+        if (!empty($this->replyTo)) {
+            $payload['headers'] = [
+                'Reply-To' => $this->replyTo[0][0]
+            ];
+        }
+
+        return $payload;
     }
 
     private function getTo(): array
