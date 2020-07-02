@@ -55,6 +55,7 @@ public function toMandrill($notifiable)
         ->addTos(['a@example.com', 'b@example.com'])
         ->fromName('Customized From')
         ->fromEmail('custom_from@example.com')
+        ->replyTo('reply@example.com')
         ->content([
             'product' => $this->product->toArray(),
         ]);
@@ -74,8 +75,7 @@ public function toMandrill($notifiable)
 |`replyTo`|`string`|Accepts one parameter(`$email`)|
 |`view`|`function`|Accepts 2 params (`$templateName`, `$keyedContentArray`)|
 
-**Note: To keep it consistent with laravel's `Mail` implementation of `replyTo`, you can pass two parameters, second parameter is ignored,  
-and If `replyTo` is called multiple times only first one will be used and others will be ignored. Because mandrill only allows one email address for reply to.**
+**Note: To keep it consistent with laravel's `Mail` implementation of `replyTo`, you can pass two parameters, second parameter is ignored, and If `replyTo` is called multiple times only first one will be used and others will be ignored. Because mandrill only allows one email address for reply to.**
 
 ## Usage in Mandrill (Dynamic Handlebars)
 When specifying your content in the methods `content` or `view` you can then write in [handlebars syntax](https://mandrill.zendesk.com/hc/en-us/articles/205582537-Using-Handlebars-for-Dynamic-Content) in your Mandrill templates like this; 
