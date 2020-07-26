@@ -9,6 +9,7 @@
         "laravel 6",
         "laravel 7",
         "mandrill",
+        "mailchimp",
         "notifications",
         "channel",
         "driver"
