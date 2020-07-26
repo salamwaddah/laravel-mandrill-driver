@@ -24,7 +24,7 @@ class MandrillChannel
         $message = $notification->toMandrill($notifiable);
 
         $this->client->post($this->url, [
-            'json' => $this->toArray($message)
+            'json' => $this->toArray($message),
         ]);
     }
 
@@ -34,7 +34,7 @@ class MandrillChannel
             'key' => env('MANDRILL_SECRET', Config::get('mail.mandrill.key')),
             'template_name' => $message->view,
             'template_content' => [],
-            'message' => $message->structure()
+            'message' => $message->structure(),
         ];
     }
 }

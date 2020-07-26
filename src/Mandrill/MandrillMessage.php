@@ -71,7 +71,7 @@ class MandrillMessage extends MailMessage
 
         if (!empty($this->replyTo)) {
             $payload['headers'] = [
-                'Reply-To' => $this->replyTo[0][0]
+                'Reply-To' => $this->replyTo[0][0],
             ];
         }
 
