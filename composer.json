@@ -33,7 +33,7 @@
     },
     "require": {
         "php": ">=7.0.0",
-        "guzzlehttp/guzzle": "^6.5",
+        "guzzlehttp/guzzle": "^6.5 || ^7.0",
         "illuminate/notifications": "^5.0 || ^6.0 || ^7.0",
         "illuminate/support": "^5.0 || ^6.0 || ^7.0"
     },
