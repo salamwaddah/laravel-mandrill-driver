@@ -69,7 +69,7 @@ class MandrillMessage extends MailMessage
             'global_merge_vars' => $this->mapGlobalVars(),
         ];
 
-        if (!empty($this->replyTo)) {
+        if (! empty($this->replyTo)) {
             $payload['headers'] = [
                 'Reply-To' => $this->replyTo[0][0],
             ];
