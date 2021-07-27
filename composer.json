@@ -35,20 +35,18 @@
     "require": {
         "php": ">=7.0.0",
         "guzzlehttp/guzzle": "^6.5 || ^7.0",
+        "hellochef-me/php-styles": "^1.0",
         "illuminate/notifications": "^5.0 || ^6.0 || ^7.0 || ^8.0",
         "illuminate/support": "^5.0 || ^6.0 || ^7.0 || ^8.0"
-    },
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.0"
     },
     "minimum-stability": "stable",
     "scripts": {
         "post-update-cmd": [
-            "cp hooks/pre-commit .git/hooks/pre-commit",
+            "cp vendor/hellochef-me/php-styles/pre-commit .git/hooks/pre-commit",
             "chmod a+x .git/hooks/pre-commit"
         ],
         "post-install-cmd": [
-            "cp hooks/pre-commit .git/hooks/pre-commit",
+            "cp vendor/hellochef-me/php-styles/pre-commit .git/hooks/pre-commit",
             "chmod a+x .git/hooks/pre-commit"
         ]
     }
