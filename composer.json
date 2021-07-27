@@ -50,5 +50,5 @@
 			"chmod a+x .git/hooks/pre-commit"
 		]
 	},
-	"version": "1.2.1"
+	"version": "1.2.2"
 }
