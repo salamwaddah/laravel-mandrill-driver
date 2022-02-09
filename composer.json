@@ -1,6 +1,6 @@
 {
 	"name": "salamwaddah/laravel-mandrill-notifications-channel",
-	"description": "Mandrill notification channel for Laravel 5, 6, 7, 8",
+	"description": "Mandrill notification channel for Laravel 5, 6, 7, 8, 9",
 	"type": "library",
 	"license": "MIT",
 	"keywords": [
@@ -13,8 +13,7 @@
 		"mandrill",
 		"mailchimp",
 		"notifications",
-		"channel",
-		"driver"
+		"channel"
 	],
 	"support": {
 		"issues": "https://github.com/salamwaddah/laravel-mandrill-driver/issues",
