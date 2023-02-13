@@ -1,3 +1,7 @@
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/salamwaddah/laravel-mandrill-driver.svg?style=flat-square)](https://packagist.org/packages/salamwaddah/laravel-mandrill-driver)
+[![Total Downloads](https://img.shields.io/packagist/dt/salamwaddah/laravel-mandrill-driver?style=flat-square)](https://packagist.org/packages/salamwaddah/laravel-mandrill-driver)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+
 ## Installation 
 ```
 composer require salamwaddah/laravel-mandrill-driver
