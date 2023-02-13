@@ -10,6 +10,7 @@
 		"laravel 7",
 		"laravel 8",
 		"laravel 9",
+		"laravel 10",
 		"mandrill",
 		"mailchimp",
 		"notifications",
@@ -36,8 +37,8 @@
 		"php": ">=7.0.0",
 		"guzzlehttp/guzzle": "^6.5 || ^7.0",
 		"hellochef-me/php-styles": "^1.0",
-		"illuminate/notifications": "^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
-		"illuminate/support": "^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
+		"illuminate/notifications": "^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0",
+		"illuminate/support": "^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0"
 	},
 	"minimum-stability": "stable",
 	"scripts": {
