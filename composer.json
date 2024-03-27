@@ -5,12 +5,6 @@
 	"license": "MIT",
 	"keywords": [
 		"laravel",
-		"laravel 5",
-		"laravel 6",
-		"laravel 7",
-		"laravel 8",
-		"laravel 9",
-		"laravel 10",
 		"mandrill",
 		"mailchimp",
 		"notifications",
